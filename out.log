@@ -1,0 +1,568 @@
+2019-11-25 16:54:07,565 [DEBUG]  Available web server routes: 
+/conversations/<conversation_id>/messages          POST                           add_message
+/conversations/<conversation_id>/tracker/events    POST                           append_events
+/webhooks/rasa                                     GET                            custom_webhook_RasaChatInput.health
+/webhooks/rasa/webhook                             POST                           custom_webhook_RasaChatInput.receive
+/webhooks/rest                                     GET                            custom_webhook_RestInput.health
+/webhooks/rest/webhook                             POST                           custom_webhook_RestInput.receive
+/model/test/intents                                POST                           evaluate_intents
+/model/test/stories                                POST                           evaluate_stories
+/conversations/<conversation_id>/execute           POST                           execute_action
+/domain                                            GET                            get_domain
+/                                                  GET                            hello
+/model                                             PUT                            load_model
+/model/parse                                       POST                           parse
+/conversations/<conversation_id>/predict           POST                           predict
+/conversations/<conversation_id>/tracker/events    PUT                            replace_events
+/conversations/<conversation_id>/story             GET                            retrieve_story
+/conversations/<conversation_id>/tracker           GET                            retrieve_tracker
+/status                                            GET                            status
+/model/predict                                     POST                           tracker_predict
+/model/train                                       POST                           train
+/model                                             DELETE                         unload_model
+/version                                           GET                            version
+2019-11-25 16:54:07,586 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 16:54:07,587 [DEBUG]  Using the default number of Sanic workers (1).
+2019-11-25 16:54:07,594 [INFO ]  Enabling coroutine debugging. Loop id 1209137436432.
+2019-11-25 16:54:07,643 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmpyto0l_xu'.
+2019-11-25 16:54:10,660 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 16:54:11,110 [DEBUG]  Connected to InMemoryTrackerStore.
+2019-11-25 16:54:11,111 [DEBUG]  Connected to lock store 'InMemoryLockStore'.
+2019-11-25 16:54:11,167 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmp32vrizj3'.
+2019-11-25 16:54:11,172 [DEBUG]  Using yaml library: G:\chatbot\rasa2\ENV\lib\site-packages\ruamel\yaml\__init__.py
+2019-11-25 16:54:22,185 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 936, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)  # type: ignore  # noqa
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 786, in create_connection
+    raise exceptions[0]
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 773, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 5002)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 102, in _extract_sender
+    jwt_payload = await self._decode_bearer_token(req.args.get("token"))
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 82, in _decode_bearer_token
+    await self._fetch_public_key()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 44, in _fetch_public_key
+    public_key_url, timeout=DEFAULT_REQUEST_TIMEOUT
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\client.py", line 1012, in __aenter__
+    self._resp = await self._coro
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\client.py", line 483, in _request
+    timeout=real_timeout
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 523, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 859, in _create_connection
+    req, traces, timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 1004, in _create_direct_connection
+    raise last_exc
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 986, in _create_direct_connection
+    req=req, client_error=client_error)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 943, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5002 ssl:default [Connect call failed ('127.0.0.1', 5002)]
+2019-11-25 16:59:44,754 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 16:59:47,724 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:00:10,192 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 470, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /webhooks/rasa/webhook not found
+2019-11-25 17:01:10,452 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:07:40,427 [DEBUG]  Available web server routes: 
+/conversations/<conversation_id>/messages          POST                           add_message
+/conversations/<conversation_id>/tracker/events    POST                           append_events
+/webhooks/rasa                                     GET                            custom_webhook_RasaChatInput.health
+/webhooks/rasa/webhook                             POST                           custom_webhook_RasaChatInput.receive
+/webhooks/rest                                     GET                            custom_webhook_RestInput.health
+/webhooks/rest/webhook                             POST                           custom_webhook_RestInput.receive
+/model/test/intents                                POST                           evaluate_intents
+/model/test/stories                                POST                           evaluate_stories
+/conversations/<conversation_id>/execute           POST                           execute_action
+/domain                                            GET                            get_domain
+/                                                  GET                            hello
+/model                                             PUT                            load_model
+/model/parse                                       POST                           parse
+/conversations/<conversation_id>/predict           POST                           predict
+/conversations/<conversation_id>/tracker/events    PUT                            replace_events
+/conversations/<conversation_id>/story             GET                            retrieve_story
+/conversations/<conversation_id>/tracker           GET                            retrieve_tracker
+/status                                            GET                            status
+/model/predict                                     POST                           tracker_predict
+/model/train                                       POST                           train
+/model                                             DELETE                         unload_model
+/version                                           GET                            version
+2019-11-25 17:07:40,444 [INFO ]  Starting Rasa server on http://localhost:5001
+2019-11-25 17:07:40,445 [DEBUG]  Using the default number of Sanic workers (1).
+2019-11-25 17:07:40,447 [INFO ]  Enabling coroutine debugging. Loop id 1261181298280.
+2019-11-25 17:07:40,496 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmpfa4l7y0f'.
+2019-11-25 17:07:43,173 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:07:43,619 [DEBUG]  Connected to InMemoryTrackerStore.
+2019-11-25 17:07:43,624 [DEBUG]  Connected to lock store 'InMemoryLockStore'.
+2019-11-25 17:07:43,673 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmpruowj3u7'.
+2019-11-25 17:07:43,677 [DEBUG]  Using yaml library: G:\chatbot\rasa2\ENV\lib\site-packages\ruamel\yaml\__init__.py
+2019-11-25 17:08:12,222 [DEBUG]  Available web server routes: 
+/conversations/<conversation_id>/messages          POST                           add_message
+/conversations/<conversation_id>/tracker/events    POST                           append_events
+/webhooks/rasa                                     GET                            custom_webhook_RasaChatInput.health
+/webhooks/rasa/webhook                             POST                           custom_webhook_RasaChatInput.receive
+/webhooks/rest                                     GET                            custom_webhook_RestInput.health
+/webhooks/rest/webhook                             POST                           custom_webhook_RestInput.receive
+/model/test/intents                                POST                           evaluate_intents
+/model/test/stories                                POST                           evaluate_stories
+/conversations/<conversation_id>/execute           POST                           execute_action
+/domain                                            GET                            get_domain
+/                                                  GET                            hello
+/model                                             PUT                            load_model
+/model/parse                                       POST                           parse
+/conversations/<conversation_id>/predict           POST                           predict
+/conversations/<conversation_id>/tracker/events    PUT                            replace_events
+/conversations/<conversation_id>/story             GET                            retrieve_story
+/conversations/<conversation_id>/tracker           GET                            retrieve_tracker
+/status                                            GET                            status
+/model/predict                                     POST                           tracker_predict
+/model/train                                       POST                           train
+/model                                             DELETE                         unload_model
+/version                                           GET                            version
+2019-11-25 17:08:12,224 [INFO ]  Starting Rasa server on http://localhost:5001
+2019-11-25 17:08:12,225 [DEBUG]  Using the default number of Sanic workers (1).
+2019-11-25 17:08:12,228 [INFO ]  Enabling coroutine debugging. Loop id 2334431139432.
+2019-11-25 17:08:12,278 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmpbtib3kty'.
+2019-11-25 17:08:14,974 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:08:15,509 [DEBUG]  Connected to InMemoryTrackerStore.
+2019-11-25 17:08:15,510 [DEBUG]  Connected to lock store 'InMemoryLockStore'.
+2019-11-25 17:08:15,559 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmp6lwznlsa'.
+2019-11-25 17:08:15,564 [DEBUG]  Using yaml library: G:\chatbot\rasa2\ENV\lib\site-packages\ruamel\yaml\__init__.py
+2019-11-25 17:08:28,988 [ERROR]  Exception occurred while handling uri: 'http://localhost:5001/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 936, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)  # type: ignore  # noqa
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 786, in create_connection
+    raise exceptions[0]
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 773, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 5002)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 102, in _extract_sender
+    jwt_payload = await self._decode_bearer_token(req.args.get("token"))
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 82, in _decode_bearer_token
+    await self._fetch_public_key()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 44, in _fetch_public_key
+    public_key_url, timeout=DEFAULT_REQUEST_TIMEOUT
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\client.py", line 1012, in __aenter__
+    self._resp = await self._coro
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\client.py", line 483, in _request
+    timeout=real_timeout
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 523, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 859, in _create_connection
+    req, traces, timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 1004, in _create_direct_connection
+    raise last_exc
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 986, in _create_direct_connection
+    req=req, client_error=client_error)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 129, in throw
+    return self.gen.throw(type, value, traceback)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\aiohttp\connector.py", line 943, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5002 ssl:default [Connect call failed ('127.0.0.1', 5002)]
+2019-11-25 17:08:51,727 [DEBUG]  Available web server routes: 
+/conversations/<conversation_id>/messages          POST                           add_message
+/conversations/<conversation_id>/tracker/events    POST                           append_events
+/webhooks/rasa                                     GET                            custom_webhook_RasaChatInput.health
+/webhooks/rasa/webhook                             POST                           custom_webhook_RasaChatInput.receive
+/webhooks/rest                                     GET                            custom_webhook_RestInput.health
+/webhooks/rest/webhook                             POST                           custom_webhook_RestInput.receive
+/model/test/intents                                POST                           evaluate_intents
+/model/test/stories                                POST                           evaluate_stories
+/conversations/<conversation_id>/execute           POST                           execute_action
+/domain                                            GET                            get_domain
+/                                                  GET                            hello
+/model                                             PUT                            load_model
+/model/parse                                       POST                           parse
+/conversations/<conversation_id>/predict           POST                           predict
+/conversations/<conversation_id>/tracker/events    PUT                            replace_events
+/conversations/<conversation_id>/story             GET                            retrieve_story
+/conversations/<conversation_id>/tracker           GET                            retrieve_tracker
+/status                                            GET                            status
+/model/predict                                     POST                           tracker_predict
+/model/train                                       POST                           train
+/model                                             DELETE                         unload_model
+/version                                           GET                            version
+2019-11-25 17:08:51,731 [INFO ]  Starting Rasa server on http://localhost:5001
+2019-11-25 17:08:51,732 [DEBUG]  Using the default number of Sanic workers (1).
+2019-11-25 17:08:51,734 [INFO ]  Enabling coroutine debugging. Loop id 2372209567336.
+2019-11-25 17:08:51,785 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmp_rbv5chz'.
+2019-11-25 17:08:54,729 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:08:55,218 [DEBUG]  Connected to InMemoryTrackerStore.
+2019-11-25 17:08:55,219 [DEBUG]  Connected to lock store 'InMemoryLockStore'.
+2019-11-25 17:08:55,268 [DEBUG]  Extracted model to 'C:\Users\User\AppData\Local\Temp\tmp5bqrkwj2'.
+2019-11-25 17:08:55,272 [DEBUG]  Using yaml library: G:\chatbot\rasa2\ENV\lib\site-packages\ruamel\yaml\__init__.py
+2019-11-25 17:09:35,842 [ERROR]  Exception occurred while handling uri: 'http://localhost:5001/api/version'
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\router.py", line 470, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /api/version not found
+2019-11-25 17:09:35,874 [ERROR]  Failed to fetch JWT public key from URL 'http://localhost:5001/api/version' with status code 404: Error: Requested URL /api/version not found
+2019-11-25 17:09:35,877 [ERROR]  Failed to decode bearer token.
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 86, in _decode_bearer_token
+    return self._decode_jwt(bearer_token)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 73, in _decode_jwt
+    authorization_header_value = bearer_token.replace(
+AttributeError: 'NoneType' object has no attribute 'replace'
+2019-11-25 17:09:35,880 [ERROR]  Exception occurred while handling uri: 'http://localhost:5001/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 110, in __next__
+    return self.gen.send(None)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\coroutines.py", line 110, in __next__
+    return self.gen.send(None)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\rasa\core\channels\rasa_chat.py", line 105, in _extract_sender
+    abort(401)
+  File "G:\chatbot\rasa2\ENV\lib\site-packages\sanic\exceptions.py", line 303, in abort
+    raise sanic_exception(message=message, status_code=status_code)
+sanic.exceptions.Unauthorized: Unauthorized
+2019-11-25 17:10:34,010 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:13:34,111 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 17:13:37,163 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:14:07,510 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 936, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)  # type: ignore  # noqa
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 786, in create_connection
+    raise exceptions[0]
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 773, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 5002)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 102, in _extract_sender
+    jwt_payload = await self._decode_bearer_token(req.args.get("token"))
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 82, in _decode_bearer_token
+    await self._fetch_public_key()
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 44, in _fetch_public_key
+    public_key_url, timeout=DEFAULT_REQUEST_TIMEOUT
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 1012, in __aenter__
+    self._resp = await self._coro
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 483, in _request
+    timeout=real_timeout
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 523, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 859, in _create_connection
+    req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 1004, in _create_direct_connection
+    raise last_exc
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 986, in _create_direct_connection
+    req=req, client_error=client_error)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 943, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5002 ssl:default [Connect call failed ('127.0.0.1', 5002)]
+2019-11-25 17:15:03,717 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:17:00,805 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 17:17:03,860 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:18:38,490 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/versions'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 470, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /versions not found
+2019-11-25 17:18:41,594 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/version'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 447, in _get
+    raise method_not_supported
+sanic.exceptions.MethodNotSupported: Method POST not allowed for URL /version
+2019-11-25 17:18:51,397 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 447, in _get
+    raise method_not_supported
+sanic.exceptions.MethodNotSupported: Method POST not allowed for URL /
+2019-11-25 17:20:26,086 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:21:06,646 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 17:21:07,400 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 1133, in run
+    serve(**server_settings)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\server.py", line 857, in serve
+    trigger_events(before_start, loop)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\server.py", line 634, in trigger_events
+    loop.run_until_complete(result)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 463, in run_until_complete
+    self.run_forever()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 430, in run_forever
+    self._run_once()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 1443, in _run_once
+    handle._run()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\events.py", line 145, in _run
+    self._callback(*self._args)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\run.py", line 228, in load_agent_on_start
+    _interpreter = NaturalLanguageInterpreter.create(nlu_model, endpoints.nlu)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\interpreter.py", line 57, in create
+    return RasaNLUInterpreter(model_directory=obj)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\interpreter.py", line 259, in __init__
+    self._load_interpreter()
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\interpreter.py", line 282, in _load_interpreter
+    self.interpreter = Interpreter.load(self.model_directory)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\nlu\model.py", line 305, in load
+    return Interpreter.create(model_metadata, component_builder, skip_validation)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\nlu\model.py", line 327, in create
+    components.validate_requirements(model_metadata.component_classes)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\nlu\components.py", line 33, in validate_requirements
+    from rasa.nlu import registry
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\nlu\registry.py", line 11, in <module>
+    from rasa.nlu.classifiers.embedding_intent_classifier import EmbeddingIntentClassifier
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\nlu\classifiers\embedding_intent_classifier.py", line 11, in <module>
+    from rasa.utils import train_utils
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\utils\train_utils.py", line 9, in <module>
+    from tensor2tensor.models.transformer import (
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensor2tensor\models\__init__.py", line 25, in <module>
+    from tensor2tensor.layers import modalities  # pylint: disable=g-import-not-at-top
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensor2tensor\layers\modalities.py", line 32, in <module>
+    from tensor2tensor.layers import common_video
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensor2tensor\layers\common_video.py", line 38, in <module>
+    tfcl = tf.contrib.layers
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\python\util\lazy_loader.py", line 63, in __getattr__
+    return getattr(module, item)
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow\__init__.py", line 50, in __getattr__
+    module = self._load()
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow\__init__.py", line 44, in _load
+    module = _importlib.import_module(self.__name__)
+  File "g:\chatbot\rasa2\env\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\contrib\__init__.py", line 54, in <module>
+    from tensorflow.contrib import image
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\contrib\image\__init__.py", line 55, in <module>
+    from tensorflow.contrib.image.python.ops.dense_image_warp import dense_image_warp
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\contrib\image\__init__.py", line 60, in <module>
+    from tensorflow.contrib.image.python.ops.image_ops import angles_to_projective_transforms
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\contrib\image\python\ops\image_ops.py", line 35, in <module>
+    resource_loader.get_path_to_datafile("_image_ops.so"))
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\contrib\util\loader.py", line 56, in load_op_library
+    ret = load_library.load_op_library(path)
+  File "g:\chatbot\rasa2\env\lib\site-packages\tensorflow_core\python\framework\load_library.py", line 78, in load_op_library
+    exec(wrappers, module.__dict__)
+  File "<string>", line 4, in <module>
+  File "g:\chatbot\rasa2\env\lib\site-packages\socketio\client.py", line 25, in signal_handler
+    return original_signal_handler(sig, frame)
+  File "g:\chatbot\rasa2\env\lib\site-packages\engineio\client.py", line 43, in signal_handler
+    return original_signal_handler(sig, frame)
+KeyboardInterrupt
+2019-11-25 17:21:14,932 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 17:21:17,817 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:22:32,617 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa2/webhook'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 918, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 407, in get
+    return self._get(request.path, request.method, "")
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\router.py", line 470, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /webhooks/rasa2/webhook not found
+2019-11-25 17:22:52,504 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 936, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)  # type: ignore  # noqa
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 786, in create_connection
+    raise exceptions[0]
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 773, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 5992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 102, in _extract_sender
+    jwt_payload = await self._decode_bearer_token(req.args.get("token"))
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 82, in _decode_bearer_token
+    await self._fetch_public_key()
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 44, in _fetch_public_key
+    public_key_url, timeout=DEFAULT_REQUEST_TIMEOUT
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 1012, in __aenter__
+    self._resp = await self._coro
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 483, in _request
+    timeout=real_timeout
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 523, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 859, in _create_connection
+    req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 1004, in _create_direct_connection
+    raise last_exc
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 986, in _create_direct_connection
+    req=req, client_error=client_error)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 943, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5992 ssl:default [Connect call failed ('127.0.0.1', 5992)]
+2019-11-25 17:23:48,748 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:26:29,561 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 1133, in run
+    serve(**server_settings)
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\server.py", line 885, in serve
+    loop.run_forever()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 430, in run_forever
+    self._run_once()
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 1407, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\selectors.py", line 323, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\selectors.py", line 314, in _select
+    r, w, x = select.select(r, w, w, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\socketio\client.py", line 25, in signal_handler
+    return original_signal_handler(sig, frame)
+  File "g:\chatbot\rasa2\env\lib\site-packages\engineio\client.py", line 43, in signal_handler
+    return original_signal_handler(sig, frame)
+KeyboardInterrupt
+2019-11-25 17:26:58,294 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-11-25 17:27:01,136 [INFO ]  Entry Point [tensor2tensor.envs.tic_tac_toe_env:TicTacToeEnv] registered with id [T2TEnv-TicTacToeEnv-v0]
+2019-11-25 17:27:18,593 [ERROR]  Exception occurred while handling uri: 'http://localhost:5005/webhooks/rasa/webhook'
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 936, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)  # type: ignore  # noqa
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 786, in create_connection
+    raise exceptions[0]
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\base_events.py", line 773, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "c:\users\user\appdata\local\programs\python\python36\Lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 5002)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "g:\chatbot\rasa2\env\lib\site-packages\sanic\app.py", line 942, in handle_request
+    response = await response
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\channel.py", line 461, in receive
+    sender_id = await self._extract_sender(request)
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 102, in _extract_sender
+    jwt_payload = await self._decode_bearer_token(req.args.get("token"))
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 82, in _decode_bearer_token
+    await self._fetch_public_key()
+  File "g:\chatbot\rasa2\env\lib\site-packages\rasa\core\channels\rasa_chat.py", line 44, in _fetch_public_key
+    public_key_url, timeout=DEFAULT_REQUEST_TIMEOUT
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 1012, in __aenter__
+    self._resp = await self._coro
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\client.py", line 483, in _request
+    timeout=real_timeout
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 523, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 859, in _create_connection
+    req, traces, timeout)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 1004, in _create_direct_connection
+    raise last_exc
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 986, in _create_direct_connection
+    req=req, client_error=client_error)
+  File "g:\chatbot\rasa2\env\lib\site-packages\aiohttp\connector.py", line 943, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5002 ssl:default [Connect call failed ('127.0.0.1', 5002)]
+2019-11-25 17:28:14,792 [ERROR]  Exception occurred while handling uri: unknown
+NoneType: None
+2019-11-25 17:38:19,592 [INFO ]  Fitting model with 260 total samples and a validation split of 0.1
+2019-11-25 17:38:24,322 [INFO ]  Done fitting keras policy model
+2019-11-25 17:38:24,640 [INFO ]  Persisted model to 'C:\Users\User\AppData\Local\Temp\tmp_oanvsmt\core'
