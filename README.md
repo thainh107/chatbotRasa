@@ -44,5 +44,3 @@ rasa run
 /model                                             DELETE                         unload_model
 /version                                           GET                            version
 
-
-curl -XPOST https://eeb6136f.ngrok.io/webhooks/rasa/webhook -d '{"sender": "user1", "message": "hello"}' -H "Content-type: application/json"
