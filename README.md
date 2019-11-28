@@ -2,17 +2,23 @@
 Chat bot get ketqua.net
 
 Python 3.6
+-- install pip ( package manager of python )
+easy_install pip  
+-- install virtualenv from pip
+ pip install virtualenv 
 
 https://virtualenv.pypa.io/en/latest/userguide/
 
 enable virtualenv 
 
 docker run -v $(pwd):/app rasa/rasa init --no-prompt
+ ---- source [/path/to/ENV/bin/activate]
 
 https://rasa.com/docs/rasa/user-guide/installation/
 
 
--- run actions 
+-- run actions
+
 python -m rasa_sdk.endpoint --actions actions
 
 -- train bot
