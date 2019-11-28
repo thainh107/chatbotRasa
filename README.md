@@ -1,9 +1,16 @@
 
 Chat bot get ketqua.net
 
+-- install pip ( package manager of python )
+easy_install pip  
+-- install virtualenv from pip
+ pip install virtualenv 
+
 https://virtualenv.pypa.io/en/latest/userguide/
 
 enable virtualenv 
+
+ ---- source [/path/to/ENV/bin/activate]
 
 https://rasa.com/docs/rasa/user-guide/installation/
 
