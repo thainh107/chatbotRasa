@@ -8,7 +8,8 @@ enable virtualenv
 https://rasa.com/docs/rasa/user-guide/installation/
 
 
--- run actions 
+-- run actions
+
 python -m rasa_sdk.endpoint --actions actions
 
 -- train bot
