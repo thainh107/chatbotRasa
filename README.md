@@ -1,9 +1,13 @@
 
 Chat bot get ketqua.net
 
+Python 3.6
+
 https://virtualenv.pypa.io/en/latest/userguide/
 
 enable virtualenv 
+
+docker run -v $(pwd):/app rasa/rasa init --no-prompt
 
 https://rasa.com/docs/rasa/user-guide/installation/
 
