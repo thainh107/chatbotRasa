@@ -11,6 +11,9 @@ https://virtualenv.pypa.io/en/latest/userguide/
 
 enable virtualenv 
 
+ .\venv\Scripts\activate
+
+
 docker run -v $(pwd):/app rasa/rasa init --no-prompt
  ---- source [/path/to/ENV/bin/activate]
 

@@ -1,3 +1,60 @@
+slots:
+  cuisine:
+    type: text
+  people:
+    type: text
+  location:
+    type: text
+  price:
+    type: text
+  info:
+    type: text
+  matches:
+    type: unfeaturized
+  object_type:
+    type: unfeaturized
+  mention:
+    type: unfeaturized
+  attribute:
+    type: unfeaturized
+  hotel:
+    type: unfeaturized
+  restaurant:
+    type: unfeaturized
+  city:
+    type: unfeaturized
+  num_people:
+    type: unfeaturized
+    auto_fill: false
+  outdoor_seating:
+    type: unfeaturized
+    auto_fill: false
+  preferences:
+    type: unfeaturized
+    auto_fill: false
+  feedback:
+    type: unfeaturized
+    auto_fill: false
+  requested_slot:
+    type: unfeaturized
+
+entities:
+  - location
+  - info
+  - people
+  - price
+  - cuisine  
+  - object_type
+  - mention
+  - attribute
+  - hotel
+  - restaurant
+  - city
+  - num_people
+  - number
+  - feedback
+  - seating
+    
 intents:
 - greet
 - goodbye
@@ -8,9 +65,20 @@ intents:
 - bot_challenge
 - ask_lottery
 - thankyou
+- inform
+- request_info
+- query_knowledge_base
+- request_restaurant:
+  use_entities: []
+- chitchat:
+  use_entities: []
+
+
 templates:
   utter_greet:
   - text: Hey! How are you?
+  - text: "hey there!"
+  - text: "Hello! How can I help you?"
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -20,8 +88,76 @@ templates:
   - text: Great, carry on!
   utter_goodbye:
   - text: Bye
+  - text: "goodbye :("
+  - text: "Bye-bye"
+  - text: "Goodbye. See you soon."
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+  utter_default:
+    - text: "sorry, I didn't understand you, please try input something else"
+  utter_ack_dosearch:
+    - text: "ok let me see what I can find"
+  utter_ack_findalternatives:
+    - text: "ok let me see what else there is"
+  utter_ack_makereservation:
+    - text: "ok making a reservation for restaurant (price={price} cuisine={cuisine}) in location={location} for count={people}? "
+      buttons:
+        - title: "thank you"
+          payload: "thank you"
+  utter_ask_cuisine:
+    - text: "what kind of cuisine would you like?"
+    - text: "what cuisine?"
+  utter_ask_howcanhelp:
+    - text: "how can I help you?"
+  utter_ask_location:
+    - text: "where?"
+  utter_ask_moreupdates:
+    - text: "if you'd like to modify anything else, please tell me what. This is what I currently have: {location} (price: {price}, cuisine: {cuisine}) for {people} people."
+  utter_ask_numpeople:
+    - text: "for how many people?"
+  utter_ask_price:
+    - text: "in which price range?"
+      buttons:
+      - title: "cheap"
+        payload: "cheap"
+      - title: "expensive"
+        payload: "expensive"
+  utter_on_it:
+    - text: "I'm on it"
+  utter_ask_rephrase:
+    - text: "Sorry, I'm not sure I understand. Can you rephrase?"
+    - text: "Can you please rephrase? I did not got that."
+  
+
+    utter_ask_num_people:
+      - text: "how many people?"
+    utter_ask_outdoor_seating:
+      - text: "do you want to seat outside?"
+    utter_ask_preferences:
+      - text: "please provide additional preferences"
+    utter_ask_feedback:
+      - text: "please give your feedback on your experience so far"
+    utter_submit:
+      - text: "All done!"
+    utter_slots_values:
+      - text: "I am going to run a restaurant search using the following parameters:\n
+               - cuisine: {cuisine}\n
+               - num_people: {num_people}\n
+               - outdoor_seating: {outdoor_seating}\n
+               - preferences: {preferences}\n
+               - feedback: {feedback}"
+    utter_noworries:
+      - text: "you are welcome :)"
+    utter_chitchat:
+      - text: "chitchat"
+    utter_ask_continue:
+      - text: "do you want to continue?"
+    utter_wrong_cuisine:
+      - text: "cuisine type is not in the database, please try again"
+    utter_wrong_num_people:
+      - text: "number of people should be a positive integer, please try again"
+    utter_wrong_outdoor_seating:
+      - text: "could not convert input to boolean value, please try again"
 actions:
 - utter_greet
 - utter_cheer_up
@@ -30,3 +166,21 @@ actions:
 - utter_goodbye
 - utter_iamabot
 - action_get_lottery
+- utter_default
+- utter_ack_dosearch
+- utter_ack_findalternatives
+- utter_ack_makereservation
+- utter_ask_cuisine
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_moreupdates
+- utter_ask_numpeople
+- utter_ask_price
+- utter_on_it
+- action_search_restaurants
+- action_suggest
+- action_query_knowledge_base
+- utter_slots_values
+- utter_noworries
+- utter_chitchat
+- utter_ask_continue
